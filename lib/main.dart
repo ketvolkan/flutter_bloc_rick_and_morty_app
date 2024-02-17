@@ -7,9 +7,7 @@ import 'package:flutter_bloc_rick_and_morty_app/app/routes/app_routes.dart';
 import 'package:flutter_bloc_rick_and_morty_app/app/themes/app_theme.dart';
 
 void main() {
-  runApp(MultiBlocProvider(providers: [
-    BlocProvider<NavigationBloc>(create: (context) => NavigationBloc(NavigationState())),
-  ], child: const MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

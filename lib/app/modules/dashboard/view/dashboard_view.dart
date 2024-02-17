@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_rick_and_morty_app/app/modules/common/widgets/appbar/bottom_app_bar/bloc/navigation_bloc.dart';
+import 'package:flutter_bloc_rick_and_morty_app/app/modules/common/widgets/appbar/bottom_app_bar/bloc/navigation_state.dart';
 import 'package:flutter_bloc_rick_and_morty_app/app/modules/common/widgets/appbar/bottom_app_bar/view/bottom_app_bar.dart';
 import 'package:flutter_bloc_rick_and_morty_app/app/modules/common/widgets/appbar/custom_app_bar.dart';
 import 'package:flutter_bloc_rick_and_morty_app/app/modules/common/widgets/custom_scaffold.dart';
@@ -14,13 +17,16 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      bottomNavigationBar: const CustomBottomAppBar(),
-      body: Navigator(
-        onGenerateRoute: (settings) => AppPagesWithDashboard.onGenerateRoutes(settings),
-        key: AppRoutes.dashboardNavigatorKey,
-        initialRoute: AppRoutes.home,
+    return BlocProvider(
+      create: (context) => NavigationBloc(NavigationState()),
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        bottomNavigationBar: const CustomBottomAppBar(),
+        body: Navigator(
+          onGenerateRoute: (settings) => AppPagesWithDashboard.onGenerateRoutes(settings),
+          key: AppRoutes.dashboardNavigatorKey,
+          initialRoute: AppRoutes.home,
+        ),
       ),
     );
   }
