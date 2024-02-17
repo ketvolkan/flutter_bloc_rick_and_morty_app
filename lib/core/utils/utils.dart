@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_rick_and_morty_app/app/routes/app_pages.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/routes/bloc/navigator_bloc.dart';
+import 'package:flutter_bloc_rick_and_morty_app/app/routes/app_routes.dart';
 
 Future<R?> errorHandler<R>({required Future<R?> Function() tryMethod, required Function(dynamic exception) onErr}) async {
   try {
@@ -43,13 +43,19 @@ class Utils {
   static double bottomBarHeight(BuildContext context) => MediaQuery.of(context).size.height * 0.0675;
 
   static Future<T?> toNamed<T>(BuildContext context, String route) async {
-    context.read<NavigatorBloc>().changeNavigatorState(!(AppPages.withoutDashboardPage.contains(route)));
     return Navigator.of(context).pushNamed(route);
   }
 
   static Future<T?> offAndToNamed<T>(BuildContext context, String route) async {
-    context.read<NavigatorBloc>().changeNavigatorState(!(AppPages.withoutDashboardPage.contains(route)));
     return Navigator.of(context).pushReplacementNamed(route);
+  }
+
+  static Future<T?> toNamedDashboard<T>(BuildContext context, String route) async {
+    return AppRoutes.dashboardNavigatorKey.currentState?.pushNamed(route);
+  }
+
+  static Future<T?> offAndToNamedDashboard<T>(BuildContext context, String route) async {
+    return AppRoutes.dashboardNavigatorKey.currentState?.pushReplacementNamed(route);
   }
 }
 

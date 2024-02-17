@@ -4,19 +4,13 @@ import 'package:flutter_bloc_rick_and_morty_app/app/modules/common/widgets/appba
 import 'package:flutter_bloc_rick_and_morty_app/app/routes/app_pages.dart';
 
 import 'package:flutter_bloc_rick_and_morty_app/app/routes/app_routes.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/routes/bloc/navigator_bloc.dart';
 import 'package:flutter_bloc_rick_and_morty_app/core/utils/utils.dart';
 import 'package:flutter_bloc_rick_and_morty_app/core/variables/colors.dart';
 import 'package:flutter_bloc_rick_and_morty_app/core/variables/enums.dart';
 
-class CustomBottomAppBar extends StatefulWidget {
+class CustomBottomAppBar extends StatelessWidget {
   const CustomBottomAppBar({super.key});
 
-  @override
-  State<CustomBottomAppBar> createState() => _CustomBottomAppBarState();
-}
-
-class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -26,14 +20,10 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          _bottomBarIconButton(context.watch<NavigatorBloc>().state.context ?? context,
-              barRoutes: BottomBarRoutes.charachter, onPressed: () => context.read<NavigationBloc>().characterRouteTap()),
-          _bottomBarIconButton(context.watch<NavigatorBloc>().state.context ?? context,
-              barRoutes: BottomBarRoutes.episodes, onPressed: () => context.read<NavigationBloc>().episodesRouteTap()),
-          _bottomBarIconButton(context.watch<NavigatorBloc>().state.context ?? context,
-              barRoutes: BottomBarRoutes.location, onPressed: () => context.read<NavigationBloc>().locationRouteTap()),
-          _bottomBarIconButton(context.watch<NavigatorBloc>().state.context ?? context,
-              barRoutes: BottomBarRoutes.settings, onPressed: () => context.read<NavigationBloc>().settignsRouteTap()),
+          _bottomBarIconButton(context, barRoutes: BottomBarRoutes.charachter, onPressed: () => context.read<NavigationBloc>().characterRouteTap()),
+          _bottomBarIconButton(context, barRoutes: BottomBarRoutes.episodes, onPressed: () => context.read<NavigationBloc>().episodesRouteTap()),
+          _bottomBarIconButton(context, barRoutes: BottomBarRoutes.location, onPressed: () => context.read<NavigationBloc>().locationRouteTap()),
+          _bottomBarIconButton(context, barRoutes: BottomBarRoutes.settings, onPressed: () => context.read<NavigationBloc>().settignsRouteTap()),
         ],
       ),
     );
@@ -64,7 +54,8 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
         ),
         onPressed: () {
           onPressed();
-          Utils.offAndToNamed(context, barRoutes.route);
+          if (context.read<NavigationBloc>().state.selectedTab == barRoutes) return;
+          Utils.offAndToNamedDashboard(context, barRoutes.route);
         },
       ),
     );

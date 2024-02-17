@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/modules/common/widgets/appbar/bottom_app_bar/bloc/navigation_bloc.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/modules/common/widgets/appbar/bottom_app_bar/bloc/navigation_state.dart';
 import 'package:flutter_bloc_rick_and_morty_app/app/modules/common/widgets/appbar/bottom_app_bar/view/bottom_app_bar.dart';
+import 'package:flutter_bloc_rick_and_morty_app/app/modules/dashboard/view/dashboard_view.dart';
 import 'package:flutter_bloc_rick_and_morty_app/app/modules/episodes/view/episodes_view.dart';
 
 import 'package:flutter_bloc_rick_and_morty_app/app/modules/home/view/home_view.dart';
@@ -12,49 +10,25 @@ import 'package:flutter_bloc_rick_and_morty_app/app/modules/locations/view/locat
 import 'package:flutter_bloc_rick_and_morty_app/app/modules/settings/view/settings_view.dart';
 import 'package:flutter_bloc_rick_and_morty_app/app/modules/splash/view/splash_view.dart';
 import 'package:flutter_bloc_rick_and_morty_app/app/routes/app_routes.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/routes/bloc/navigator_bloc.dart';
 
 mixin AppPages {
   static Route<dynamic>? onGenerateRoutes(RouteSettings settings) {
     switch (settings.name) {
-      case AppRoutes.home:
-        return CustomPageRoute(
-          routeSettings: RouteSettings(name: settings.name),
-          builder: (context) => const HomeView(),
-        );
-      case AppRoutes.episodes:
-        return CustomPageRoute(
-          routeSettings: RouteSettings(name: settings.name),
-          builder: (context) => const EpisodesView(),
-        );
-      case AppRoutes.location:
-        return CustomPageRoute(
-          routeSettings: RouteSettings(name: settings.name),
-          builder: (context) => const LocationView(),
-        );
-      case AppRoutes.settings:
-        return CustomPageRoute(
-          routeSettings: RouteSettings(name: settings.name),
-          builder: (context) => const SettingsView(),
-        );
       case AppRoutes.splash:
         return CustomPageRoute(
           routeSettings: RouteSettings(name: settings.name),
           builder: (context) => const SplashView(),
         );
+      case AppRoutes.dashboard:
+        return CustomPageRoute(
+          routeSettings: RouteSettings(name: settings.name),
+          builder: (context) => const DashboardView(),
+        );
+
       default:
         return null;
     }
   }
-
-  static Widget routeBuilder(BuildContext context, Widget child) {
-    return Scaffold(
-      body: child,
-      bottomNavigationBar: context.watch<NavigatorBloc>().state.showDashboard ? const CustomBottomAppBar() : null,
-    );
-  }
-
-  static List<String> get withoutDashboardPage => [AppRoutes.splash];
 }
 
 class CustomPageRoute extends PageRouteBuilder {

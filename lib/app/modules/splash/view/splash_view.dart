@@ -11,7 +11,7 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 3)).then((value) => Utils.offAndToNamed(context, AppRoutes.home));
+    Future.delayed(const Duration(seconds: 3)).then((value) => Utils.offAndToNamed(context, AppRoutes.dashboard));
     return CustomScaffold(
       body: Center(
         child: Column(

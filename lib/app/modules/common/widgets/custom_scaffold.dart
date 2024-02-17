@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_rick_and_morty_app/app/routes/app_pages.dart';
 import 'package:flutter_bloc_rick_and_morty_app/app/routes/app_routes.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/routes/bloc/navigator_bloc.dart';
 
 import '../../../../../core/utils/utils.dart';
 
