@@ -13,11 +13,11 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext contextMaterial) {
+  Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: AppRoutes.navigatorKey,
       debugShowCheckedModeBanner: false,
-      theme: AppThemes.light(contextMaterial),
+      theme: AppThemes.light(context),
       initialRoute: AppRoutes.splash,
       onGenerateRoute: (settings) => AppPages.onGenerateRoutes(settings),
     );
