@@ -34,7 +34,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: Colors.transparent,
       elevation: 0,
       toolbarHeight: Utils.appBarHeight(context),
       centerTitle: centerTitle,

@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext contextMaterial) {
     return MaterialApp(
+      navigatorKey: AppRoutes.navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: AppThemes.light(contextMaterial),
       initialRoute: AppRoutes.splash,

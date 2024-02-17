@@ -53,7 +53,7 @@ class CustomBottomAppBar extends StatelessWidget {
         onPressed: () {
           onPressed();
           if (context.read<NavigationBloc>().state.selectedTab == barRoutes) return;
-          Utils.offAndToNamedDashboard(context, barRoutes.route);
+          Utils.offAndToNamedDashboard(barRoutes.route);
         },
       ),
     );

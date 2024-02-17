@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+
+import '../../../../core/constants/app_constants.dart';
+import '../../../../core/utils/utils.dart';
+import '../../../routes/app_routes.dart';
 import '../../common/widgets/custom_scaffold.dart';
 import '../../common/widgets/dialogs/custom_progress_dialog.dart';
 import '../../common/widgets/texts/custom_text.dart';
-import '../../../routes/app_routes.dart';
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/utils/utils.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 3)).then((value) => Utils.offAndToNamed(context, AppRoutes.dashboard));
+    Future.delayed(const Duration(seconds: 3)).then((value) => Utils.offAndToNamed(AppRoutes.dashboard));
     return CustomScaffold(
       body: Center(
         child: Column(

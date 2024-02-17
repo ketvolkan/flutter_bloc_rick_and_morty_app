@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../modules/episodes/view/episodes_view.dart';
+import '../modules/home/bloc/home_state_bloc/home_data_bloc.dart';
+import '../modules/home/bloc/home_state_bloc/home_data_state.dart';
 import '../modules/home/view/home_view.dart';
 import '../modules/locations/view/locations_view.dart';
 import '../modules/settings/view/settings_view.dart';
@@ -16,7 +19,7 @@ mixin AppPagesWithDashboard {
       case AppRoutes.home:
         return CustomPageRoute(
           routeSettings: RouteSettings(name: settings.name),
-          builder: (context) => const HomeView(),
+          builder: (context) => BlocProvider(create: (context) => HomeDataBloc(HomeDataState()), child: const HomeView()),
         );
       case AppRoutes.location:
         return CustomPageRoute(

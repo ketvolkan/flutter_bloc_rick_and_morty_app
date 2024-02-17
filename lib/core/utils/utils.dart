@@ -1,5 +1,7 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 
+import '../../app/modules/common/widgets/dialogs/custom_progress_dialog.dart';
 import '../../app/routes/app_routes.dart';
 
 Future<R?> errorHandler<R>({required Future<R?> Function() tryMethod, required Function(dynamic exception) onErr}) async {
@@ -40,21 +42,48 @@ class Utils {
 
   static double appBarHeight(BuildContext context) => MediaQuery.of(context).size.height * 0.07;
   static double bottomBarHeight(BuildContext context) => MediaQuery.of(context).size.height * 0.0675;
-
-  static Future<T?> toNamed<T>(BuildContext context, String route) async {
-    return Navigator.of(context).pushNamed(route);
+  static void back<T>() async {
+    return AppRoutes.navigatorKey?.currentState?.pop();
   }
 
-  static Future<T?> offAndToNamed<T>(BuildContext context, String route) async {
-    return Navigator.of(context).pushReplacementNamed(route);
+  static Future<T?> toNamed<T>(String route) async {
+    return AppRoutes.navigatorKey?.currentState?.pushNamed(route);
   }
 
-  static Future<T?> toNamedDashboard<T>(BuildContext context, String route) async {
-    return AppRoutes.dashboardNavigatorKey.currentState?.pushNamed(route);
+  static Future<T?> offAndToNamed<T>(String route) async {
+    return AppRoutes.navigatorKey?.currentState?.pushReplacementNamed(route);
   }
 
-  static Future<T?> offAndToNamedDashboard<T>(BuildContext context, String route) async {
-    return AppRoutes.dashboardNavigatorKey.currentState?.pushReplacementNamed(route);
+  static void backDashboard<T>() async {
+    return AppRoutes.dashboardNavigatorKey?.currentState?.pop();
+  }
+
+  static Future<T?> toNamedDashboard<T>(String route) async {
+    return AppRoutes.dashboardNavigatorKey?.currentState?.pushNamed(route);
+  }
+
+  static Future<T?> offAndToNamedDashboard<T>(String route) async {
+    return AppRoutes.dashboardNavigatorKey?.currentState?.pushReplacementNamed(route);
+  }
+
+  static Future<T?> showProgressDialog<T>() async {
+    if (AppRoutes.navigatorKey?.currentState == null) return null;
+    await showDialog<T?>(
+      context: AppRoutes.navigatorKey!.currentState!.context,
+      builder: (context) => const CustomProgressDialog(),
+      barrierDismissible: false,
+    );
+    return null;
+  }
+
+  static Future<void> showErrorDialog(String subtitle, {String? title}) async {
+    if (AppRoutes.navigatorKey?.currentState == null) return;
+    await AwesomeDialog(
+      context: AppRoutes.navigatorKey!.currentState!.context,
+      title: title ?? "Hata",
+      desc: subtitle,
+      btnCancelText: "Kapat",
+    ).show();
   }
 }
 
