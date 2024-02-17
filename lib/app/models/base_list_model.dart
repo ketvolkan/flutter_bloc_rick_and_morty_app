@@ -1,4 +1,4 @@
-import 'package:flutter_bloc_rick_and_morty_app/core/utils/serializer.dart';
+import '../../core/utils/serializer.dart';
 
 class BaseListModel<T extends BaseModel> extends BaseModel {
   Info? info;

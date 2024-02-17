@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/models/base_list_model.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/models/character_model.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/models/general_response.dart';
-import 'package:flutter_bloc_rick_and_morty_app/core/constants/endpoints.dart';
-import 'package:flutter_bloc_rick_and_morty_app/core/services/network/network_service.dart';
+import '../models/base_list_model.dart';
+import '../models/character_model.dart';
+import '../models/general_response.dart';
+import '../../core/constants/endpoints.dart';
+import '../../core/services/network/network_service.dart';
 
-import 'package:flutter_bloc_rick_and_morty_app/core/utils/serializer.dart';
+import '../../core/utils/serializer.dart';
 
 abstract class ICharacterRepository {
   Future<BaseListModel> getCharacterList({required int page});

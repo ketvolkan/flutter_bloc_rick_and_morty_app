@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/modules/common/widgets/custom_scaffold.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/modules/common/widgets/dialogs/custom_progress_dialog.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/modules/common/widgets/texts/custom_text.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/routes/app_routes.dart';
-import 'package:flutter_bloc_rick_and_morty_app/core/constants/app_constants.dart';
-import 'package:flutter_bloc_rick_and_morty_app/core/utils/utils.dart';
+import '../../common/widgets/custom_scaffold.dart';
+import '../../common/widgets/dialogs/custom_progress_dialog.dart';
+import '../../common/widgets/texts/custom_text.dart';
+import '../../../routes/app_routes.dart';
+import '../../../../core/constants/app_constants.dart';
+import '../../../../core/utils/utils.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});

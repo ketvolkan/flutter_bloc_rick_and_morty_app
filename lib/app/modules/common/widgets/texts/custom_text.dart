@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_rick_and_morty_app/core/constants/app_constants.dart';
+import '../../../../../core/constants/app_constants.dart';
 
 import '../../../../../core/utils/utils.dart';
 import '../../../../../core/variables/colors.dart';

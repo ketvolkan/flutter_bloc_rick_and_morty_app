@@ -1,4 +1,4 @@
-import 'package:flutter_bloc_rick_and_morty_app/core/variables/enums.dart';
+import '../../../../../../../core/variables/enums.dart';
 
 abstract class NavigationEvent {
   BottomBarRoutes get route;

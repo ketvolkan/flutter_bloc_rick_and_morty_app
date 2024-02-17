@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/routes/app_routes.dart';
+import '../../app/routes/app_routes.dart';
 
 enum BottomBarRoutes {
   charachter,

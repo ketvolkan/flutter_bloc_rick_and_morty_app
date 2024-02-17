@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/modules/common/widgets/appbar/bottom_app_bar/bloc/navigation_bloc.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/routes/app_pages.dart';
+import '../bloc/navigation_bloc.dart';
+import '../../../../../../routes/app_pages.dart';
 
-import 'package:flutter_bloc_rick_and_morty_app/app/routes/app_routes.dart';
-import 'package:flutter_bloc_rick_and_morty_app/core/utils/utils.dart';
-import 'package:flutter_bloc_rick_and_morty_app/core/variables/colors.dart';
-import 'package:flutter_bloc_rick_and_morty_app/core/variables/enums.dart';
+import '../../../../../../routes/app_routes.dart';
+import '../../../../../../../core/utils/utils.dart';
+import '../../../../../../../core/variables/colors.dart';
+import '../../../../../../../core/variables/enums.dart';
 
 class CustomBottomAppBar extends StatelessWidget {
   const CustomBottomAppBar({super.key});

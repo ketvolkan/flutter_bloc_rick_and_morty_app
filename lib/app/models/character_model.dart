@@ -1,5 +1,5 @@
-import 'package:flutter_bloc_rick_and_morty_app/app/models/origin_model.dart';
-import 'package:flutter_bloc_rick_and_morty_app/core/utils/serializer.dart';
+import 'origin_model.dart';
+import '../../core/utils/serializer.dart';
 
 class Character extends BaseModel {
   int? id;

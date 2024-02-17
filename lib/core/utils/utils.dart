@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/routes/app_pages.dart';
-import 'package:flutter_bloc_rick_and_morty_app/app/routes/app_routes.dart';
+import '../../app/routes/app_pages.dart';
+import '../../app/routes/app_routes.dart';
 
 Future<R?> errorHandler<R>({required Future<R?> Function() tryMethod, required Function(dynamic exception) onErr}) async {
   try {

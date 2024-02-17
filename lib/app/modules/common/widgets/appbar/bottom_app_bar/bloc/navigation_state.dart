@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_bloc_rick_and_morty_app/core/variables/enums.dart';
+import '../../../../../../../core/variables/enums.dart';
 
 class NavigationState extends Equatable {
   BottomBarRoutes selectedTab = BottomBarRoutes.charachter;
