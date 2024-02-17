@@ -43,22 +43,26 @@ class _HomeViewState extends State<HomeView> {
     return CustomScaffold(
       extendBodyBehindAppBar: true,
       appBar: _buildAppBar(context),
-      body: BlocBuilder<HomeDataBloc, HomeDataState>(
-        bloc: context.read<HomeDataBloc>(),
-        builder: (context, state) {
-          if ((charachterList?.results ?? []).isEmpty && state.state == HomeState.Busy) {
-            return const SizedBox.shrink();
-          }
-          if ((charachterList?.results ?? []).isEmpty && state.state != HomeState.Busy) {
-            return Center(child: CustomText("Herhangi Bir Data Bulunamadı", context));
-          }
-          return SizedBox(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            child: charachterGridView(context, charachterList),
-          );
-        },
-      ),
+      body: gridViewBlocBuilder(context, charachterList),
+    );
+  }
+
+  BlocBuilder<HomeDataBloc, HomeDataState> gridViewBlocBuilder(BuildContext context, BaseListModel<Character>? charachterList) {
+    return BlocBuilder<HomeDataBloc, HomeDataState>(
+      bloc: context.read<HomeDataBloc>(),
+      builder: (context, state) {
+        if ((charachterList?.results ?? []).isEmpty && state.state == HomeState.Busy) {
+          return const SizedBox.shrink();
+        }
+        if ((charachterList?.results ?? []).isEmpty && state.state != HomeState.Busy) {
+          return Center(child: CustomText("Herhangi Bir Data Bulunamadı", context));
+        }
+        return SizedBox(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: charachterGridView(context, charachterList),
+        );
+      },
     );
   }
 
@@ -85,7 +89,7 @@ class _HomeViewState extends State<HomeView> {
   }
 
   CustomAppBar _buildAppBar(BuildContext context) => CustomAppBar(
-        title: CustomText.custom(
+        title: CustomText.withBorder(
           "Karakterler",
           context,
           centerText: true,

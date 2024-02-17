@@ -13,16 +13,42 @@ class CustomBottomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomAppBar(
       elevation: 0,
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          _bottomBarIconButton(context, barRoutes: BottomBarRoutes.charachter, onPressed: () => context.read<NavigationBloc>().characterRouteTap()),
-          _bottomBarIconButton(context, barRoutes: BottomBarRoutes.episodes, onPressed: () => context.read<NavigationBloc>().episodesRouteTap()),
-          _bottomBarIconButton(context, barRoutes: BottomBarRoutes.location, onPressed: () => context.read<NavigationBloc>().locationRouteTap()),
-          _bottomBarIconButton(context, barRoutes: BottomBarRoutes.settings, onPressed: () => context.read<NavigationBloc>().settignsRouteTap()),
-        ],
+      color: Colors.transparent,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: Utils.extraHighPadding(context)),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            borderRadius: BorderRadius.circular(Utils.highRadius(context)),
+            border: Border.all(color: ColorTable.getTextColor(context).withOpacity(0.5), width: Utils.extraLowPadding(context) * .7),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              _bottomBarIconButton(
+                context,
+                barRoutes: BottomBarRoutes.charachter,
+                onPressed: () => context.read<NavigationBloc>().characterRouteTap(),
+              ),
+              _bottomBarIconButton(
+                context,
+                barRoutes: BottomBarRoutes.episodes,
+                onPressed: () => context.read<NavigationBloc>().episodesRouteTap(),
+              ),
+              _bottomBarIconButton(
+                context,
+                barRoutes: BottomBarRoutes.location,
+                onPressed: () => context.read<NavigationBloc>().locationRouteTap(),
+              ),
+              _bottomBarIconButton(
+                context,
+                barRoutes: BottomBarRoutes.settings,
+                onPressed: () => context.read<NavigationBloc>().settignsRouteTap(),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -30,7 +56,7 @@ class CustomBottomAppBar extends StatelessWidget {
   SizedBox _bottomBarIconButton(BuildContext context, {required BottomBarRoutes barRoutes, required Function() onPressed}) {
     return SizedBox(
       height: Utils.bottomBarHeight(context),
-      width: MediaQuery.of(context).size.width * 0.25,
+      width: MediaQuery.of(context).size.width * 0.2,
       child: IconButton(
         iconSize: Utils.normalIconSize(context) * 1.25,
         icon: Column(

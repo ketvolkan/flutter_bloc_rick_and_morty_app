@@ -15,6 +15,7 @@ class DashboardView extends StatelessWidget {
     return BlocProvider(
       create: (context) => NavigationBloc(NavigationState()),
       child: Scaffold(
+        extendBody: true,
         resizeToAvoidBottomInset: true,
         bottomNavigationBar: const CustomBottomAppBar(),
         body: Navigator(

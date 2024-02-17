@@ -18,7 +18,7 @@ class SettingsView extends StatelessWidget {
   }
 
   CustomAppBar _buildAppBar(BuildContext context) => CustomAppBar(
-        title: CustomText.custom(
+        title: CustomText.withBorder(
           "Ayarlar",
           context,
           centerText: true,

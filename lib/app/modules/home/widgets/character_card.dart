@@ -15,36 +15,33 @@ class CharachterCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        border: Border.all(color: ColorTable.getTextColor(context), width: Utils.extraLowPadding(context)),
+        border: Border.all(color: ColorTable.getTextColor(context).withOpacity(0.5), width: Utils.extraLowPadding(context)),
         image: DecorationImage(image: NetworkImage(character.image ?? AppConstants.unknownImagePath)),
-        color: Colors.white,
+        color: ColorTable.getTextColor(context),
         borderRadius: BorderRadius.circular(Utils.normalRadius(context)),
       ),
-      child: SizedBox.square(
-        dimension: MediaQuery.of(context).size.width * 0.45,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            DecoratedBox(
-              decoration: BoxDecoration(
-                color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.7),
-                borderRadius: BorderRadius.circular(Utils.extraLowRadius(context)),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(Utils.extraLowPadding(context)),
-                child: CustomText(
-                  character.name,
-                  context,
-                  centerText: true,
-                  bold: true,
-                  maxlines: 1,
-                  textOverflow: TextOverflow.ellipsis,
-                ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          DecoratedBox(
+            decoration: BoxDecoration(
+              color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.7),
+              borderRadius: BorderRadius.circular(Utils.extraLowRadius(context)),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(Utils.extraLowPadding(context)),
+              child: CustomText(
+                character.name,
+                context,
+                centerText: true,
+                bold: true,
+                maxlines: 1,
+                textOverflow: TextOverflow.ellipsis,
               ),
             ),
-            Utils.extraLowPadding(context).verticalSpace,
-          ],
-        ),
+          ),
+          Utils.extraLowPadding(context).verticalSpace,
+        ],
       ),
     );
   }

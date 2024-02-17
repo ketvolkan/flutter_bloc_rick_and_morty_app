@@ -2,10 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../modules/episodes/bloc/episodes_state_bloc/episodes_data_bloc.dart';
+import '../modules/episodes/bloc/episodes_state_bloc/episodes_data_state.dart';
 import '../modules/episodes/view/episodes_view.dart';
 import '../modules/home/bloc/home_state_bloc/home_data_bloc.dart';
 import '../modules/home/bloc/home_state_bloc/home_data_state.dart';
 import '../modules/home/view/home_view.dart';
+import '../modules/locations/bloc/locations_state_bloc/locations_data_bloc.dart';
+import '../modules/locations/bloc/locations_state_bloc/locations_data_state.dart';
 import '../modules/locations/view/locations_view.dart';
 import '../modules/settings/view/settings_view.dart';
 import 'app_pages.dart';
@@ -24,7 +28,7 @@ mixin AppPagesWithDashboard {
       case AppRoutes.location:
         return CustomPageRoute(
           routeSettings: RouteSettings(name: settings.name),
-          builder: (context) => const LocationView(),
+          builder: (context) => BlocProvider(create: (context) => LocationsDataBloc(LocationsDataState()), child: const LocationsView()),
         );
       case AppRoutes.settings:
         return CustomPageRoute(
@@ -34,7 +38,7 @@ mixin AppPagesWithDashboard {
       case AppRoutes.episodes:
         return CustomPageRoute(
           routeSettings: RouteSettings(name: settings.name),
-          builder: (context) => const EpisodesView(),
+          builder: (context) => BlocProvider(create: (context) => EpisodesDataBloc(EpisodesDataState()), child: const EpisodesView()),
         );
       default:
         return null;

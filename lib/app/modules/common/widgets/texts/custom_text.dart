@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/constants/app_constants.dart';
 
+import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/utils/utils.dart';
 import '../../../../../core/variables/colors.dart';
 
@@ -17,6 +17,7 @@ class CustomText extends StatelessWidget {
   final TextOverflow? textOverflow;
   final int? maxlines;
   final BuildContext context;
+  bool hasTextBorder = false;
   CustomText(
     this.text,
     this.context, {
@@ -106,15 +107,41 @@ class CustomText extends StatelessWidget {
     this.maxlines,
     this.lineThrough = false,
   }) : super(key: key);
-
+  CustomText.withBorder(
+    this.text,
+    this.context, {
+    Key? key,
+    this.hasTextBorder = true,
+    this.fontFamily,
+    this.textColor,
+    this.underlined = false,
+    this.bold = false,
+    this.centerText = false,
+    this.textOverflow,
+    this.textSize,
+    this.maxlines,
+    this.lineThrough = false,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    return hasTextBorder
+        ? Stack(
+            alignment: Alignment.center,
+            children: [
+              TextSide(context, isBehindText: true),
+              TextSide(context),
+            ],
+          )
+        : TextSide(context);
+  }
+
+  Text TextSide(BuildContext context, {bool isBehindText = false}) {
     return Text(
       text ?? '',
       style: TextStyle(
         fontFamily: fontFamily ?? AppConstants.deafultFont,
-        fontSize: textSize ?? Utils.normalTextSize(context),
-        color: textColor ?? ColorTable.getTextColor(context),
+        fontSize: (textSize ?? Utils.normalTextSize(context)) * (isBehindText ? 1.1 : 1),
+        color: isBehindText ? Theme.of(context).scaffoldBackgroundColor : textColor ?? ColorTable.getTextColor(context),
         decoration: underlined
             ? TextDecoration.underline
             : lineThrough
