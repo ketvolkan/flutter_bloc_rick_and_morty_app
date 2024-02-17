@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
+
 import '../../../../../../../core/variables/enums.dart';
 
+// ignore: must_be_immutable
 class NavigationState extends Equatable {
   BottomBarRoutes selectedTab = BottomBarRoutes.charachter;
 

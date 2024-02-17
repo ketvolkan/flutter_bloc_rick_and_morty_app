@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+
+import '../../../../core/constants/app_constants.dart';
+import '../../../../core/utils/utils.dart';
 import '../../common/widgets/appbar/custom_app_bar.dart';
 import '../../common/widgets/custom_scaffold.dart';
 import '../../common/widgets/texts/custom_text.dart';
-import '../../../routes/app_pages.dart';
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/utils/utils.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

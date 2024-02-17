@@ -1,13 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../modules/common/widgets/appbar/bottom_app_bar/view/bottom_app_bar.dart';
 import '../modules/dashboard/view/dashboard_view.dart';
-import '../modules/episodes/view/episodes_view.dart';
-
-import '../modules/home/view/home_view.dart';
-import '../modules/locations/view/locations_view.dart';
-import '../modules/settings/view/settings_view.dart';
 import '../modules/splash/view/splash_view.dart';
 import 'app_routes.dart';
 

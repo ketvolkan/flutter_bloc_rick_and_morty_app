@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../common/widgets/appbar/bottom_app_bar/view/bottom_app_bar.dart';
+
 import '../../common/widgets/appbar/custom_app_bar.dart';
 import '../../common/widgets/custom_scaffold.dart';
 import '../../common/widgets/texts/custom_text.dart';

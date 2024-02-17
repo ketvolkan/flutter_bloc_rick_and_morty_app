@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../common/widgets/appbar/bottom_app_bar/view/bottom_app_bar.dart';
+
+import '../../../../core/constants/app_constants.dart';
+import '../../../../core/utils/utils.dart';
 import '../../common/widgets/appbar/custom_app_bar.dart';
 import '../../common/widgets/custom_scaffold.dart';
 import '../../common/widgets/texts/custom_text.dart';
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/utils/utils.dart';
 
 class LocationView extends StatelessWidget {
   const LocationView({super.key});
